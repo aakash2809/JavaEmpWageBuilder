@@ -60,7 +60,7 @@ public class EmpWageBuilder {
 
 	// MAIN FUNCTION
 	public static void main(String args[]) {
-		System.out.println("Welcome to Employee wage Computation Program");
+		System.out.println("Welcome to Employee wage Computation Program ");
 		System.out.println("--------------------------------------------------");
 		// LOOP TILL CONDITION DID NOT REACH FOR TERMINATION
 		while (workigDaysCompleted < Working_DAYS_PER_MONTH && workigHoursCompleted < WORKING_hOURS_PER_MONTH) {
