@@ -1,5 +1,4 @@
 public class EmpWageBuilder {
-	
 	private static final int PART_TIME_HOUR =4;//NUMBER OF FIXED HOURS PER DAY FOR HALF DAY OR PART TIME
 	private static final int FULL_DAY_HOUR = 8;//NUMBER OF FIXED HOURS PER DAY FOR FULL DAY 
 	private static final int EMPLOYEE_STATUS = 1; // CONSTANT TO CHECK WHETHER EMPLOYEE PRESENT OF ABSENT
@@ -32,7 +31,6 @@ public class EmpWageBuilder {
 			       numberOfHours = FULL_DAY_HOUR;
 				   break;
 		}
-					
 	    return numberOfHours;
 	}
 	
@@ -47,16 +45,14 @@ public class EmpWageBuilder {
 		int calculateDailyWage=0;
 		System.out.println("Welcome to Employee wage Computation Program");
 		System.out.println("--------------------------------------------------");
-		
 		// LOOP TILL CONDITION DID NOT REACH FOR TERMINATION
 		while (workigDaysCompleted < Working_DAYS_PER_MONTH && workigHoursCompleted < WORKING_HOURS_PER_MONTH) {
 			int empAttandanceStatus = (int) (Math.floor(Math.random() * 10) % 2);
-			
+
 			if (empAttandanceStatus == EMPLOYEE_STATUS) {
-				
+
 				numberOfPresent++;
 				int empDayStatus = (int) (Math.floor(Math.random() * 10) % 2); // KEY GENRATION FOR HALF DAYS AND FULL DAYS
-																		
 				// TO COUNT NO OF FULL DAYS AND HALF DAYS
 				if (empDayStatus == 0)
 					numberOfHalfDays++;
@@ -74,9 +70,7 @@ public class EmpWageBuilder {
 
 			else
 				numberOfAbsent++;
-			
-			workigDaysCompleted++;
-			
+				workigDaysCompleted++;
 			}
 		
 		System.out.println("Your Company Name        - " +this.company);
@@ -86,14 +80,18 @@ public class EmpWageBuilder {
 		System.out.println("total full working days  - " + numberOfFulldays);
 		System.out.println("Number of hours completed- " +workigHoursCompleted );
 		System.out.println("total wage               - " + calculateDailyWage);
-	}
+  }
 	
 	public static void main(String[] args) {
-	
+		//Arraylist to store different compniews wage delete
+		ArrayList<EmpWageBuilderUC8> empWage=new ArrayList<EmpWageBuilderUC8>();
 		EmpWageBuilder Dmart=new EmpWageBuilder("Dmart",20,100,20);
 		EmpWageBuilder Airtel=new EmpWageBuilder("Airtel",40,200,30);
 		Dmart.computeEmpWage();
 		Airtel.computeEmpWage();
+		//STORING  EMPLOYEE WAGE OF DINNERENT  COMPANIEDS EMPLOYEE
+		empWage.add(Dmart);
+		empWage.add(Airtel);
 	}
 
 }
