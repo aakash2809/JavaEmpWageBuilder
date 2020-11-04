@@ -57,7 +57,7 @@ class Airtel implements CompanyEmpWage {
 	@Override
 	public String toString() {
 		System.out.println("");
-		System.out.println("Airtel:");
+		System.out.println("Airtel: ");
 		for (int i = 0; i < NUM_OF_WORKING_DAYS; i++) {
 			int j = i + 1;
 			// PRINTING DAY AND CORRESPONDING WAGE BASED ON NUMBER OF HOURS HE WORKED
