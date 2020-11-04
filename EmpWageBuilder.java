@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  *THIS PROGRM SHOWS THE HOW INTERFACE WORKKS 
@@ -5,9 +7,8 @@
  *IN PROGRAM IT CAN BE SEE THAT INTERFACE computeEmpWage() METHOD IS OVERRIDE IN DIFFEENT CLASSES AND IMPLEMENTED 
  *ACCORDIDING INDIVIDUALS OWN LOGIC
  *AFTER CALUCLATING WAGES ARE GOING TO BE STRORED IN ARRAYLIST 
+ *PRINT TOTAL WAGE WITH DAILY WAGE BASED ON EMPLOYEE PRESENSE STATUS
  */
-import java.util.ArrayList;
-import java.util.List;
 
 //INTERFACE 
 interface CompanyEmpWage {
@@ -22,15 +23,14 @@ class Airtel implements CompanyEmpWage {
 	public static final int NUM_OF_WORKING_DAYS = 2;
 	public static final int MAX_HRS_IN_MONTH = 10;
 	private int totalEmpWage;
+	private int dailyWage[] = new int[100];
 
 	// IMPLEMENTATION DECLARED IN INTERFACE OF COMPPUTE_EMP_WAGE METHOD FOR COMPANY
 	// OWN PURPOSE
 	@Override
 	public void computeEmpWage() {
 		// variable
-		int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
-		System.out.println("            Wellcome to Airtel wage calculater     ");
-		System.out.println("----------------------------------------------------");
+		int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0, index = 0;
 
 		// COMPUTATION
 		while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
@@ -47,18 +47,24 @@ class Airtel implements CompanyEmpWage {
 				empHrs = 4;
 			}
 			totalEmpHrs += empHrs;
-			System.out.println("Days:" + totalWorkingDays + " Emp hrs" + empHrs);
+			dailyWage[index] = empHrs * EMP_RATE_PER_HOUR;
+			index++;
 		}
 		this.totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
-		System.out.println("total Emp Wage : =" + totalEmpWage);
 
 	}
 
 	@Override
 	public String toString() {
-		return "Airtel [totalEmpWage=" + totalEmpWage + "]";
+		System.out.println("");
+		System.out.println("Airtel:");
+		for (int i = 0; i < NUM_OF_WORKING_DAYS; i++) {
+			int j = i + 1;
+			// PRINTING DAY AND CORRESPONDING WAGE BASED ON NUMBER OF HOURS HE WORKED
+			System.out.println("Day:" + j + "  Wage " + dailyWage[i]);
+		}
+		return "totalEmpWage=" + totalEmpWage;
 	}
-
 }
 
 //DMART COMPANY HAVING ITS OWN LOGIC AND DATA FOR ITS EMPLOYEE WAGE 
@@ -69,16 +75,15 @@ class Dmart implements CompanyEmpWage {
 	public static final int NUM_OF_WORKING_DAYS = 5;
 	public static final int MAX_HRS_IN_MONTH = 20;
 	private int totalEmpWage;
+	private int dailyWage[] = new int[100];
 
 	// IMPLEMENTATION DECLARED IN INTERFACE OF COMPPUTE_EMP_WAGE METHOD FOR COMPANY
 	// OWN PURPOSE
 	@Override
 	public void computeEmpWage() {
 		// variable
-		int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
+		int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0, index = 0;
 		System.out.println("");
-		System.out.println("            Wellcome to Dmart wage calculater     ");
-		System.out.println("----------------------------------------------------");
 		// COMPUTATION
 		while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
 			totalWorkingDays++;
@@ -94,17 +99,23 @@ class Dmart implements CompanyEmpWage {
 				empHrs = 4;
 			}
 			totalEmpHrs += empHrs;
-			System.out.println("Days:" + totalWorkingDays + " Emp hrs" + empHrs);
+			dailyWage[index] = empHrs * EMP_RATE_PER_HOUR;
+			index++;
 		}
 		this.totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
-		System.out.println("total Emp Wage : =" + totalEmpWage);
 	}
 
 	@Override
 	public String toString() {
-		return "Dmart [totalEmpWage=" + totalEmpWage + "]";
+		System.out.println("");
+		System.out.println("Demart :");
+		for (int i = 0; i < NUM_OF_WORKING_DAYS; i++) {
+			int j = i + 1;
+			// PRINTING DAY AND CORRESPONDING WAGE BASED ON NUMBER OF HOURS HE WORKED
+			System.out.println("Day:" + j + " Wage " + dailyWage[i]);
+		}
+		return "totalEmpWage=" + totalEmpWage;
 	}
-
 }
 
 //MAIN CLASS OR CONTROLER CLASS
@@ -132,8 +143,8 @@ public class EmpWageBuilder {
 		companiesWageDetail.add(dmart);
 
 		System.out.println("");
-		System.out.println("         All Compnies Employee wages        ");
-		System.out.println("---------------------------------------------");
+		System.out.println("         All Compnies Employee wages along with daily wages       ");
+		System.out.println("---------------------------------------------------------------------");
 		showCompniesEmpWages(companiesWageDetail);
 
 	}
